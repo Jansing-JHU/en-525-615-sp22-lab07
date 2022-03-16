@@ -7,6 +7,8 @@
     - [Set Up](#set-up)
   - [Experiment 1: Dumb Terminal for Debugging](#experiment-1-dumb-terminal-for-debugging)
   - [Experiment 2: Matrix Keypad](#experiment-2-matrix-keypad)
+      - [For 3x4 Matrix Keypads](#for-3x4-matrix-keypads)
+      - [For 4x4 Matrix Keypads](#for-4x4-matrix-keypads)
 - [References](#references)
 
 
@@ -176,14 +178,18 @@ Save your project, commit your code. Close the project.  You do not need to prod
 
 ## Experiment 2: Matrix Keypad
 
-In this experiment, you will interface the 4x4 matrix keypad with the
-STM32. There are several ways to do this. We will use a polling
+In this experiment, you will interface either the 3x4 or 4x4 matrix keypad with the
+STM32. There are several different ways to do this. We will use a polling
 technique that will scan across the columns while turning on one of the
 rows at a time.
 
 This is the general schematic:
 
-![width=100%](media/Arduino-Keypad-Tutorial-4X4-Keypad-Schematic.png)
+![width=100%](media/3x4_keypad_schematic.png)   
+**3x4 Matrix Keypad Schematic**
+
+![width=100%](media/Arduino-Keypad-Tutorial-4X4-Keypad-Schematic.png)   
+**4x4 Matrix Keypad Schematic**
 
 As Row 1 is SET (and all of the other rows are RESET), poll the columns
 to see if a key is pressed. If so, map that key to its value. Ignore
@@ -255,10 +261,17 @@ so be careful when working with other devices.
 Once you have demonstrated that you can detect the button and assign it
 a value, create another project called `calc`. In this project, you will
 pull everything together and make a calculator that uses the number
-buttons to enter in the numbers. The **A** button will represent add and
+buttons to enter in the numbers. 
+
+#### For 3x4 Matrix Keypads
+The **#** button will represent add and the **\*** will represent subtract.  SW1 on the NUCLEO board will represent clear and SW2 on the NUCLEO board will represent equals.
+
+#### For 4x4 Matrix Keypads
+The **A** button will represent add and
 the **B** button will represent subtract. The **C** button will
-represent clear and the **D** button will represent equals. Create a
-basic calculator, pushing the output to the UART terminal.
+represent clear and the **D** button will represent equals.
+
+Create a basic calculator, pushing the output to the UART terminal.
 
 Take screenshots of your terminal window, showing some examples of both
 addition and subtraction. You should be able to do this for any number
@@ -270,7 +283,7 @@ Consider *only* postive integers as the input and both negative and positive for
 yourself with float point numbers for this experiment.
 
 A complete lab report will contain a schematic, a flowchart, a table
-showing the GPIO pins used, and appropriate output.
+showing the GPIO pins used, and appropriate output.  You will specify which keypad you have and how you interfaced it to the board.  Photos are highly encouraged.  You should write your lab report as if someone would use it later to repeat/demonstrate your work.
 
 You are welcome to use the oscilloscope to debug the hardware. Document
 this in your lab report, if needed.
